@@ -1,0 +1,39 @@
+
+math.randomseed(os.clock()*10000000000)
+
+function returnRandomAngle(x,y)
+    return math.random(x,y)
+end
+
+function createAngles()
+   local min = 0
+   local max = 90
+   local angleB = returnRandomAngle(min, max)
+   local angleA = 90-angleB
+   return angleA, angleB
+end
+
+function solveSides()
+   local a,b = createAngles()
+   
+   local text1, text2
+   
+   if math.tan(a) > 1 and a > (math.pi/4) then
+       text1 = "(side a/side b) > 1"
+   else
+       text1 = "(side a/side b) < 1"
+   end
+   
+   if math.tan(b) > 1 and b > (math.pi/4) then
+      text2 = "(side b/side a) > 1"
+      else
+      text2 = "(side b/side a) < 1"
+   end
+   
+   print(text1)
+   print(text2)
+   print("Angle A: " .. a)
+   print("Angle B: " .. b)
+end
+
+solveSides()
